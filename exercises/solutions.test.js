@@ -14,15 +14,15 @@ test('Question 1', () => {
 test('Question 2', () => {
   const myAccount = new solutions.SavingsAccount('Reuben');
   expect(myAccount.name).toBe('Reuben');
-  expect(myAccount.balance).toBe('$0');
+  expect(myAccount.showBalance()).toBe('$0');
   expect(myAccount.depositFunds(100)).toBe('$100 Deposited');
-  expect(myAccount.balance).toBe('$100');
+  expect(myAccount.showBalance()).toBe('$100');
   expect(myAccount.depositFunds(-100)).toBe('Please include a deposit amount that is greater than 0');
-  expect(myAccount.balance).toBe('$100');
+  expect(myAccount.showBalance()).toBe('$100');
   expect(myAccount.withdrawFunds(75)).toBe('$75 withdrawn');
-  expect(myAccount.balance).toBe('$25');
+  expect(myAccount.showBalance()).toBe('$25');
   expect(myAccount.withdrawFunds(26)).toBe('Insufficient Funds');
-  expect(myAccount.balance).toBe('$25');
+  expect(myAccount.showBalance()).toBe('$25');
 });
 
 // Question 3
@@ -37,11 +37,11 @@ test('Question 3', () => {
   expect(myPhone.removeContact('Reuben')).toBe('Reuben removed.');
   expect(myPhone.contacts).toEqual([{name: "Peter", phoneNumber: '3499217541', extraData: 'is perfectly fine'}]);
   expect(myPhone.removeContact('Paul')).toBe('Contact not found.');
-  expect(myPhone.call('Peter')).toBe('Contact not found.');
+  expect(myPhone.call('Paul')).toBe('Contact not found.');
   expect(myPhone.call('3499217541')).toBe('Calling Peter...');
   expect(myPhone.call('1234567890')).toBe('Calling 1234567890');
   expect(myPhone.call('888')).toBe('Invalid');
-  expect(myPhone.call('Paul')).toBe('Invalid');
+  expect(myPhone.call('Paul')).toBe('Contact not found.');
 });
 
 // Question 4
